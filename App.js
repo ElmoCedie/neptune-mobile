@@ -1,23 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { View } from "react-native";
+import { createStackNavigator } from "react-navigation";
+
+import Home from "./src/components/home";
+import Water from "./src/components/water";
+import Plant from "./src/components/plant";
+import Settings from "./src/components/settings";
+
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+      <View style={{ flex: 1 }}>
+          <RootStack />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const RootStack = createStackNavigator(
+  {
+    'Home' : Home,
+    'Water': Water,
+    'Plant': Plant,
+    'Setting': Settings
   },
-});
+  {
+    initialRouteName: 'Home'
+  }
+)
